@@ -14,6 +14,7 @@ export default class Enemy {
     cameraIndex = null,
     rollNumber = null,
     maxRoll = null,
+    fixedRollNumber = null,
     usesRollNumber = true
   }) {
     this.id = id;
@@ -28,6 +29,9 @@ export default class Enemy {
     // Tope del número propio (null = MAX_ROLL). Robot 5 lo limita a 10 para
     // reducir su actividad (ampliación acordada con el usuario).
     this.maxRoll = maxRoll;
+    // Número propio fijo (null = se sortea 1..maxRoll al iniciar la partida).
+    // Lo usa el Nivel 5 para que robots 1..3 tengan siempre 20 y el 5 siempre 10.
+    this.fixedRollNumber = fixedRollNumber;
     // El robot 4 no usa número propio: reacciona a tiradas globales iguales a 1.
     this.usesRollNumber = usesRollNumber;
     this.enabled = true;

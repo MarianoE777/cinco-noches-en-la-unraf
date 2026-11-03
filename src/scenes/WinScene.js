@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 // Victoria según GDD: fundido a negro + reloj llegando a las 6.
-// `data.nextScene` define a dónde continuar (ej. Nivel 1 -> Nivel 2).
+// `data.nextScene` define a dónde continuar (ej. Nivel 1 -> ... -> Nivel 5).
 // Sin `nextScene` vuelve al menú.
 export default class WinScene extends Phaser.Scene {
   constructor() {
@@ -10,7 +10,13 @@ export default class WinScene extends Phaser.Scene {
 
   create(data = {}) {
     const nextScene = data.nextScene ?? 'MenuInicio';
-    const nextLabel = nextScene === 'Nivel2' ? 'continuar al Nivel 2' : 'volver al menú';
+    const nextLabels = {
+      Nivel2: 'continuar al Nivel 2',
+      Nivel3: 'continuar al Nivel 3',
+      Nivel4: 'continuar al Nivel 4',
+      Nivel5: 'continuar al Nivel 5'
+    };
+    const nextLabel = nextLabels[nextScene] ?? 'volver al menú';
 
     this.cameras.main.fadeIn(1000, 0, 0, 0);
     this.add.text(480, 250, '6 AM', { fontSize: '72px', color: '#fff' }).setOrigin(0.5);

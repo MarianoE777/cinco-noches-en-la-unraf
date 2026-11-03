@@ -36,6 +36,12 @@ export default class OfficeScene extends Phaser.Scene {
     return null;
   }
 
+  // Números propios fijos por robot (null = se sortean 1..maxRoll).
+  // El Nivel 5 los fija para que sus enemigos sean siempre 20/10.
+  getEnemyFixedRolls() {
+    return null;
+  }
+
   // Etiqueta del nivel mostrada en la esquina superior derecha (null = sin etiqueta).
   getLevelLabel() {
     return null;
@@ -104,7 +110,8 @@ export default class OfficeScene extends Phaser.Scene {
     // Enemigos: lógica pura (EnemyManager) + render (EnemyView).
     // El nivel puede limitar los números propios de algunos robots.
     this.enemies = new EnemyManager(EnemyFactory.createAll({
-      maxRolls: this.getEnemyMaxRolls() ?? {}
+      maxRolls: this.getEnemyMaxRolls() ?? {},
+      fixedRolls: this.getEnemyFixedRolls() ?? {}
     }));
     this.enemyView = new EnemyView(this, {
       enemyLayer: this.enemyLayer,

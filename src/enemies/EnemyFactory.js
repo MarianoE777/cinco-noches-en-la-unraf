@@ -105,7 +105,8 @@ export class Edificio3Robot extends Edificio3Enemy {
 export default class EnemyFactory {
   // maxRolls: topes opcionales del número propio por id de robot. Permite que
   // cada nivel restrinja los números (ej. Nivel 1: robots 1..3 -> 1..10, robot 5 -> 1..5).
-  static createAll({ maxRolls = {} } = {}) {
+  // fixedRolls: números propios fijos por id de robot (ej. Nivel 5: siempre 20/10).
+  static createAll({ maxRolls = {}, fixedRolls = {} } = {}) {
     const enemies = [
       new BatteryEnemy(),
       new WindowRobot(),
@@ -117,6 +118,9 @@ export default class EnemyFactory {
     enemies.forEach((enemy) => {
       if (maxRolls[enemy.id] != null) {
         enemy.maxRoll = maxRolls[enemy.id];
+      }
+      if (fixedRolls[enemy.id] != null) {
+        enemy.fixedRollNumber = fixedRolls[enemy.id];
       }
     });
 

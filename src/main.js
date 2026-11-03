@@ -4,6 +4,9 @@ import PeriodicoScene from './scenes/PeriodicoScene.js';
 import OfficeScene from './scenes/OfficeScene.js';
 import Level1Scene from './scenes/Level1Scene.js';
 import Level2Scene from './scenes/Level2Scene.js';
+import Level3Scene from './scenes/Level3Scene.js';
+import Level4Scene from './scenes/Level4Scene.js';
+import Level5Scene from './scenes/Level5Scene.js';
 import WinScene from './scenes/WinScene.js';
 import LoseScene from './scenes/LoseScene.js';
 
@@ -17,7 +20,7 @@ const config = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
-  scene: [MenuScene, PeriodicoScene, OfficeScene, Level1Scene, Level2Scene, WinScene, LoseScene]
+  scene: [MenuScene, PeriodicoScene, OfficeScene, Level1Scene, Level2Scene, Level3Scene, Level4Scene, Level5Scene, WinScene, LoseScene]
 };
 
 // eslint-disable-next-line no-new

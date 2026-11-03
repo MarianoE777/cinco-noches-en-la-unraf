@@ -20,7 +20,9 @@ export default class EnemyManager {
     this.enemies.forEach((enemy) => {
       const participates = enemy.enabled && enemy.usesRollNumber;
       const cap = enemy.maxRoll ?? MAX_ROLL;
-      enemy.rollNumber = participates ? randInt(1, cap) : null;
+      // Si el nivel define un número fijo se usa tal cual; si no, se sortea 1..cap.
+      const roll = enemy.fixedRollNumber ?? randInt(1, cap);
+      enemy.rollNumber = participates ? roll : null;
     });
     this.ai = new EnemyAI();
   }
